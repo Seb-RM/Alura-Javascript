@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //Primera elección
+        let area
+        while (true) {
+
+            area = prompt("¿Te gustaría seguir hacia el área de 'Front-End' o 'Back-End'?");
+
+            if (area === "Front-End") {
+                // Elección dentro del área de Front-End
+                let mensajeUno ="Muy bien! Has elegido Front-End.";
+                alert(mensajeUno);
+                let framework = prompt("¿Prefieres aprender 'React' o 'Vue'?");
+                alert(`¡Genial! Has elegido aprender ${framework} en el área de Front-End.`);
+                break;
+            } else if (area === "Back-End") {
+                // Elección dentro del área de Back-End
+                let mensajeUno ="Muy bien! Has elegido Back-End.";
+                alert(mensajeUno);
+                let lenguaje = prompt("¿Prefieres aprender 'C#' o 'Java'?");
+                alert(`¡Excelente! Has elegido aprender ${lenguaje} en el área de Back-End.`);
+                break;
+            }   else {
+            alert("Por favor, selecciona una opción válida: 'Front-End' o 'Back-End'.");
+            }
+        }
+         // Segunda decisión
+        let especializacion  
+
+        while (true) {
+
+            especializacion = prompt("¿Te gustaría seguir especializándote en el área elegida o desarrollarte para convertirte en Fullstack? Responde con 'especializarme' o 'Fullstack'.");
+
+            if (especializacion === "especializarme") {
+                alert("¡Muy bien! Seguir especializándote te permitirá dominar tu área elegida.");
+                break;
+            } else if (especializacion === "Fullstack") {
+                alert("¡Impresionante! Convertirte en Fullstack te dará un panorama completo del desarrollo.");
+                break;
+            } else {
+                alert("Por favor, selecciona una opción válida: 'especializarme' o 'Fullstack'.");
+            }
+        }
+        // Listado de tecnologías a aprender
+        let otraTecnologia;
+        let tecnologias = [];
+
+        while (true) {
+            otraTecnologia = prompt("¿Hay alguna otra tecnología que te gustaría aprender? Responde 'ok' para continuar o cualquier otra cosa para salir.");
+            if (otraTecnologia.toLowerCase() !== "ok") {
+                break;
+            }
+            let tecnologia = prompt("¿Qué tecnología te gustaría aprender?");
+            tecnologias.push(tecnologia);
+            alert(`¡Fantástico! ¡Aprender ${tecnologia} será una gran adición a tus habilidades!`);
+        }
+
+        // Mostrar listado de tecnologías 
+        if (tecnologias.length > 0) {
+            alert(`Has decidido aprender las siguientes tecnologías: ${tecnologias.join(", ")}. ¡Buena suerte en tu aprendizaje!`);
+        } else {
+            alert("¡Parece que no estas interesado/a en aprender ninguna tecnología nueva!");
+        }
+
+    </script>
+</body>
+</html>
