@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    let listaCompras = {
+            1: "Frutas",
+            2: "Lácteos",
+            3: "Congelados",
+            4: "Dulces",
+            5: "Bebidas"
+        };
+
+        let categorias = {
+            "Frutas": [],
+            "Lácteos": [],
+            "Congelados": [],
+            "Dulces": [],
+            "Bebidas": []
+        };
+
+        let agregarMas = true;
+
+        while (agregarMas) {
+            let respuesta = prompt("¿Deseas agregar un alimento a tu lista de compras? Responde con 'sí' o 'no'.").toLowerCase();
+            
+            if (respuesta === "sí") {
+                let alimento = prompt("¿Qué alimento deseas agregar?");
+                let categoriaNumero = prompt(
+                    "¿En qué categoría se encaja este alimento? Ingresa el número correspondiente:\n" +
+                    "1. Frutas\n" +
+                    "2. Lácteos\n" +
+                    "3. Congelados\n" +
+                    "4. Dulces\n" +
+                    "5. Bebidas"
+                );
+
+                // Convertir la categoría seleccionada a su nombre correspondiente
+                let categoria = listaCompras[categoriaNumero];
+
+                // Verificar si la categoría existe, si no existe mostrar un mensaje de error
+                if (categoria) {
+                    categorias[categoria].push(alimento);
+                } else {
+                    alert("Categoría no válida. Por favor, selecciona un número del 1 al 5.");
+                }
+
+            } else if (respuesta === "no") {
+                agregarMas = false;
+            } else {
+                alert("Por favor, responde con 'sí' o 'no'.");
+            }
+        }
+
+        // Mostrar la lista de compras completa
+        let listaFinal = "Lista de compras:\n\n";
+        for (let categoria in categorias) {
+            listaFinal += `${categoria}: ${categorias[categoria].join(", ") || ""}\n`;
+        }
+        alert(listaFinal);
+    </script>
+</body>
+</html>
