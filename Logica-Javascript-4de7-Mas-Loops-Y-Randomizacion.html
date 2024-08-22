@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const numeroAdivinar = Math.floor(Math.random() * 11);
+
+        let intentos = 3;
+        let acertado = false;
+
+        while (intentos > 0) {
+            let adivinanza = prompt(`Adivina el número entre 0 y 10. Te quedan ${intentos} intentos:`);
+            
+            if (parseInt(adivinanza) === numeroAdivinar) {
+                alert("¡Felicidades! Has adivinado el número.");
+                acertado = true;
+                break;
+            } else {
+                intentos--;
+                if (parseInt(adivinanza) < numeroAdivinar) {
+                    alert("Número incorrecto. El número es mayor.");
+                } else {
+                    alert("Número incorrecto. El número es menor.");
+                }
+            }
+        }
+
+        if (!acertado) {
+            alert(`Lo siento, no has adivinado el número. El número correcto era ${numeroAdivinar}.`);
+        }
+
+    </script>
+</body>
+</html>
