@@ -6,6 +6,71 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <script>
+        // Funciones para cada operación
+        function sumar(a, b) {
+            return a + b;
+        }
+
+        function restar(a, b) {
+            return a - b;
+        }
+
+        function multiplicar(a, b) {
+            return a * b;
+        }
+
+        function dividir(a, b) {
+            if (b === 0) {
+                return "No se puede dividir por cero.";
+            } else {
+                return a / b;
+            }
+        }
+
+        // Función principal de la calculadora
+        function calculadora() {
+            let continuar = true;
+
+            while (continuar) {
+                let operacion = prompt("Elige una operación:\n1. Sumar\n2. Restar\n3. Multiplicar\n4. Dividir\n5. Salir");
+
+                if (operacion === "5") {
+                    alert("Hasta la próxima.");
+                    continuar = false;
+                } else {
+                    // Pedir al usuario que ingrese dos números
+                    let num1 = parseFloat(prompt("Ingresa el primer número:"));
+                    let num2 = parseFloat(prompt("Ingresa el segundo número:"));
+
+                    // Determinar la operación a realizar
+                    let resultado;
+                    switch (operacion) {
+                        case "1":
+                            resultado = sumar(num1, num2);
+                            alert(`El resultado de sumar ${num1} y ${num2} es: ${resultado}`);
+                            break;
+                        case "2":
+                            resultado = restar(num1, num2);
+                            alert(`El resultado de restar ${num1} y ${num2} es: ${resultado}`);
+                            break;
+                        case "3":
+                            resultado = multiplicar(num1, num2);
+                            alert(`El resultado de multiplicar ${num1} y ${num2} es: ${resultado}`);
+                            break;
+                        case "4":
+                            resultado = dividir(num1, num2);
+                            alert(`El resultado de dividir ${num1} entre ${num2} es: ${resultado}`);
+                            break;
+                        default:
+                            alert("Operación no válida. Por favor, elige una opción entre 1 y 5.");
+                    }
+                }
+            }
+        }
+
+        // Iniciar la calculadora
+        calculadora();
+    </script>
 </body>
 </html>
