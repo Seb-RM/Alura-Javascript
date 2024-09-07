@@ -23,6 +23,22 @@
             "Bebidas": []
         };
 
+         // Función para verificar si la lista está vacía
+        function esListaVacia() {
+            return Object.values(categorias).every(arr => arr.length === 0);
+        }
+
+        // Mensaje de inicio basado en el estado de la lista
+        if (esListaVacia()) {
+            alert("Tu lista de compras está vacía. ¡Vamos a comenzar añadiendo algunos alimentos!");
+        } else {
+            let listaActual = "Tu lista actual de compras es:\n\n";
+            for (let categoria in categorias) {
+                listaActual += `${categoria}: ${categorias[categoria].join(", ") || "No hay artículos"}\n`;
+            }
+            alert(listaActual + "\nPuedes añadir o eliminar alimentos.");
+        }
+
         let agregarMas = true;
 
         while (agregarMas) {
