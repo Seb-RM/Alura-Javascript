@@ -62,6 +62,82 @@
             listaFinal += `${categoria}: ${categorias[categoria].join(", ") || ""}\n`;
         }
         alert(listaFinal);
+
+        agregarMas = true;
+
+        while (agregarMas) {
+            let accion = prompt("¿Deseas añadir o eliminar un alimento en tu lista de compras? Responde con 'añadir', 'eliminar' o 'no'.").toLowerCase();
+            
+            if (accion === "añadir") {
+                let alimento = prompt("¿Qué alimento deseas agregar?");
+                let categoriaNumero = prompt(
+                    "¿En qué categoría se encaja este alimento? Ingresa el número correspondiente:\n" +
+                    "1. Frutas\n" +
+                    "2. Lácteos\n" +
+                    "3. Congelados\n" +
+                    "4. Dulces\n" +
+                    "5. Bebidas"
+                );
+
+                // Convertir la categoría seleccionada a su nombre correspondiente
+                let categoria = listaCompras[categoriaNumero];
+
+                // Verificar si la categoría existe, si no existe mostrar un mensaje de error
+                if (categoria) {
+                    categorias[categoria].push(alimento);
+                    alert(`Se ha agregado ${alimento} a la categoría ${categoria}.`);
+                } else {
+                    alert("Categoría no válida. Por favor, selecciona un número del 1 al 5.");
+                }
+
+            } else if (accion === "eliminar") {
+                // Verificar si hay elementos en alguna categoría
+                let listaVacia = Object.values(categorias).every(arr => arr.length === 0);
+
+                if (listaVacia) {
+                    alert("No hay elementos en la lista de compras para eliminar.");
+                } else {
+                    let categoriaNumero = prompt(
+                        "¿De qué categoría deseas eliminar un alimento? Ingresa el número correspondiente:\n" +
+                        "1. Frutas\n" +
+                        "2. Lácteos\n" +
+                        "3. Congelados\n" +
+                        "4. Dulces\n" +
+                        "5. Bebidas"
+                    );
+
+                    let categoria = listaCompras[categoriaNumero];
+
+                    if (categoria && categorias[categoria].length > 0) {
+                        let alimentoAEliminar = prompt(`Lista de ${categoria}: ${categorias[categoria].join(", ")}\n¿Qué alimento deseas eliminar?`);
+                        
+                        // Verificar si el alimento existe en la categoría
+                        let indice = categorias[categoria].indexOf(alimentoAEliminar);
+                        
+                        if (indice !== -1) {
+                            categorias[categoria].splice(indice, 1);  // Eliminar el alimento
+                            alert(`${alimentoAEliminar} ha sido eliminado de la categoría ${categoria}.`);
+                        } else {
+                            alert("¡No fue posible encontrar el elemento en la lista!");
+                        }
+                    } else {
+                        alert("No hay elementos en esa categoría o la categoría no es válida.");
+                    }
+                }
+
+            } else if (accion === "no") {
+                agregarMas = false;
+            } else {
+                alert("Por favor, responde con 'añadir', 'eliminar' o 'no'.");
+            }
+        }
+
+        // Mostrar la lista de compras agrupada por categorías
+        listaFinal = "Lista de compras:\n\n";
+        for (let categoria in categorias) {
+            listaFinal += `${categoria}: ${categorias[categoria].join(", ") || "No hay artículos"}\n`;
+        }
+        alert(listaFinal);
     </script>
 
 </body>
